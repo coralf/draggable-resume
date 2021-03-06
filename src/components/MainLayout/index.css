@@ -1,0 +1,11 @@
+.main-layout {
+}
+
+.main-layout>div {
+  height: 100vh;
+}
+
+.main-layout>div:nth-child(1),
+.main-layout>div:nth-child(2) {
+  border-right: 1px solid #e5e5e5;
+}
