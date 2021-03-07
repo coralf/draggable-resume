@@ -27,10 +27,6 @@ const OperatePanel = (props: Props) => {
     dispatch(updateSelectedComponentValues({ styles: { ...selectedComponent?.styles, ...values } }));
   }
 
-  useEffect(() => {
-    stylesForm.resetFields();
-    commForm.resetFields();
-  }, [selectedComponent])
 
   if (!selectedComponent) return null;
   return (

@@ -3,49 +3,49 @@ import { COMPONENT_TYPE } from "componentRender/config";
 import { stat } from "fs";
 import RootState from "types";
 import { genUUID } from "utils/commUtils";
-import { createTextDef } from "utils/componentsUtils";
+import { createComponentByType, createTextDef } from "utils/componentsUtils";
 
 
 const rootSlice = createSlice({
   name: 'root',
   initialState: {
-    components: []
+    components: [],
   } as RootState,
   reducers: {
-    updateDrapType: (state, action) => {
-
-      return state;
-    },
     addComponent: (state, { payload }) => {
-      state.components.push(createTextDef({
-        originX: payload.originX,
-        originY: payload.originY
-      }));
-      return state;
+      state.components.push(createComponentByType(payload));
     },
     updateSelectedComponent: (state, { payload }) => {
       state.selectedComponent = payload;
-      return state;
     },
-    updateSelectedComponentValues: (state, { payload }) => {
+    updateSelectedComponentValues: (state, { payload, ...rest }) => {
       if (state.selectedComponent) {
         const idx = state.components.findIndex(item => item.id === state.selectedComponent?.id);
         const newComponent = { ...state.selectedComponent, ...payload };
         state.components.splice(idx, 1, newComponent);
+        state.selectedComponent = newComponent;//更新选中的组件
       }
-      return state;
     },
     deleteSelectedComponent: (state) => {
       if (state.selectedComponent) {
         const idx = state.components.findIndex(item => item.id === state.selectedComponent?.id);
-        console.log("🚀 ~ file: rootReducer.ts ~ line 41 ~ idx", idx)
         state.components.splice(idx, 1);
       }
-      return state;
+    },
+    updateMainContentInfo: (state, { payload }) => {
+      state.mainContentInfo = {
+        bottom: payload.bottom,
+        height: payload.height,
+        left: payload.left,
+        right: payload.right,
+        top: payload.top,
+        width: payload.width,
+        x: payload.x,
+        y: payload.y
+      };
     }
-
   }
 });
-export const { updateDrapType, addComponent, updateSelectedComponent, updateSelectedComponentValues, deleteSelectedComponent } = rootSlice.actions;
+export const { updateMainContentInfo, addComponent, updateSelectedComponent, updateSelectedComponentValues, deleteSelectedComponent } = rootSlice.actions;
 
 export default rootSlice.reducer;

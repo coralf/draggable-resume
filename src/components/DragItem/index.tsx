@@ -5,12 +5,14 @@ import { useDrag } from 'react-dnd'
 import './index.css'
 
 interface Props {
+  [key: string]: any;
   name: string;
   type: string;
-  icon: any
+  icon: any;
+
 }
 
-const DragItem = ({ type, name, icon }: Props) => {
+const DragItem = ({ type, name, icon, children }: Props) => {
   const [{ isDragging }, drag, preview] = useDrag(
     () => ({
       item: { type },
@@ -24,7 +26,7 @@ const DragItem = ({ type, name, icon }: Props) => {
     <div className="dragItem">
       <div ref={drag}>
         {/* <img src={icon} alt="" width="25" height="25" /> */}
-        <EditOutlined />
+        {icon}
         <span style={{ padding: '0 12px' }}>{name}</span>
       </div>
     </div>

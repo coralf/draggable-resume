@@ -1,11 +1,11 @@
 import { Button } from 'antd'
 import React from 'react'
-import MainLayout from '../MainLayout';
+import MainLayout from '../components/MainLayout';
 interface Props {
 
 }
 
-const App = (props: Props) => {
+export const App = (props: Props) => {
   return (
     <div>
       <MainLayout />
@@ -14,4 +14,3 @@ const App = (props: Props) => {
   )
 }
 
-export default App;

@@ -30,20 +30,17 @@ const Wrapper = (props: ComponentProps) => {
   const handleStop = () => {
     setIsDragging(false);
   }
-
   return (
     <Draggable
       onStart={handleStart}
       onDrag={handleDrag}
       onStop={handleStop}
     >
-      <div style={{
-        position: 'absolute',
-        left: props.originX,
-        top: props.originY,
-        cursor: 'grab',
-        ...((rootState.selectedComponent?.id === props.id) && selectedStyle)
-      }}
+      <div
+        onClick={handleStart}
+        style={{
+          ...((rootState.selectedComponent?.id === props.id) && selectedStyle)
+        }}
       >
         {props.children}
       </div>

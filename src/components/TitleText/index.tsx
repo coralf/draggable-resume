@@ -8,7 +8,13 @@ const TitleText = (props: TextProps) => {
   return (
     <Wrapper {...props}>
       <div
-        style={props.styles}
+        style={{
+          // position: 'absolute',
+          // left: props.originX,
+          // top: props.originY,
+          cursor: 'grab',
+          ...props.styles
+        }}
       >
         {props.text}
       </div>

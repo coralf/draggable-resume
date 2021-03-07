@@ -3,6 +3,7 @@ export interface ComponentProps {
   id: string;
   key: string | number;
   type: string;
+  styles: React.CSSProperties
 }
 
 
@@ -10,17 +11,27 @@ export interface TextProps extends ComponentProps {
   originY: string;
   originX: string;
   text: string;
-  styles: React.CSSProperties
 }
 
 export interface LayoutProps extends ComponentProps {
+  kkk: string;
+}
+
+export interface BasicInfoProps extends ComponentProps {
+
+
 
 }
 
-export type Component = LayoutProps & TextProps;
+interface MainContentInfo {
+  [key: string]: number;
+  width: number;
+  height: number;
+}
+
 
 export default interface RootState {
-  components: Component[];
+  components: ComponentProps[];
   selectedComponent?: ComponentProps;//当前选中的组件
+  mainContentInfo?: MainContentInfo
 }
-
