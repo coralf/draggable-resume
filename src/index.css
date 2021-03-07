@@ -1,0 +1,31 @@
+@import '~antd/dist/antd.css';
+
+
+:root {
+
+  --color-blue   : #40a9ff;
+  --color-bg-blue: #e6f7ff;
+  --color-border : #e5e5e5;
+}
+
+
+html,
+body {
+  font-size: 16px;
+}
+
+
+.toolBar {
+  padding         : 12px;
+  position        : sticky;
+  top             : 0;
+  left            : 0;
+  z-index         : 100;
+  background-color: #fff;
+  border-bottom   : 1px solid var(--color-border);
+  box-shadow      : -5px -2px 15px #cccccc;
+}
+
+.toolBarLayout {
+  display   : flex;
+}
